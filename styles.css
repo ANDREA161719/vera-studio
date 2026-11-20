@@ -73,3 +73,32 @@
 .product-grid .empty-collection{flex:1;min-width:100%;scroll-snap-align:start}
 @media(max-width:900px){.product-grid .product-card{flex-basis:calc((100% - 18px)/2)}}
 @media(max-width:600px){.product-carousel{gap:7px}.carousel-arrow{width:30px;height:30px;flex-basis:30px;font-size:22px}.product-grid{gap:12px}.product-grid .product-card{flex-basis:100%}.product-photo{height:340px}.carousel-dots{margin-top:7px}}
+
+
+/* Pulido boutique VERA STUDIO: catálogo limpio y editorial */
+.products-section{max-width:1240px}
+.section-heading{margin-bottom:34px}
+.section-heading h2{letter-spacing:-.5px}
+.product-carousel{gap:16px}
+.product-grid{gap:22px;padding:8px 3px 20px}
+.product-grid .product-card{flex:0 0 calc((100% - 44px)/3)}
+.product-photo{height:350px;background:#e9e3d9}
+.product-info{padding:16px 3px}
+.product-info h3{font-size:20px;line-height:1.25}
+.carousel-arrow{width:36px;height:36px;flex-basis:36px;font-size:23px;background:transparent;color:#8d7148;border-color:#b99a68}
+.carousel-arrow:hover:not(:disabled){background:#b99a68;color:#171614}
+.carousel-dots{margin:10px 0 6px}
+.carousel-dot{border:0;padding:0;cursor:pointer}
+.carousel-dot.active{background:#a88c61}
+@media(max-width:900px){
+ .product-grid .product-card{flex-basis:calc((100% - 22px)/2)}
+ .product-photo{height:320px}
+}
+@media(max-width:600px){
+ .product-carousel{gap:5px}
+ .carousel-arrow{width:29px;height:29px;flex-basis:29px;font-size:21px}
+ .product-grid{gap:12px;padding-left:2px;padding-right:2px}
+ .product-grid .product-card{flex-basis:100%}
+ .product-photo{height:min(430px,112vw)}
+ .product-info h3{font-size:19px}
+}
