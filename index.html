@@ -25,7 +25,7 @@
       <a href="#productos">Novedades</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a class="header-cta" href="https://wa.me/573108895061" target="_blank" rel="noopener">WhatsApp ↗</a>
+    <div class="header-actions"><button class="cart-toggle" id="cartToggle" aria-label="Abrir bolsa">Bolsa <span id="cartCount">0</span></button><a class="header-cta" href="https://wa.me/573108895061" target="_blank" rel="noopener">WhatsApp ↗</a></div>
   </header>
 
   <main>
@@ -83,7 +83,7 @@
         <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar una prenda..." aria-label="Buscar productos"></label>
       </div>
       <div class="product-grid" id="productGrid" aria-live="polite"></div>
-      <p class="catalog-note">Los precios y las tallas se consultan directamente por WhatsApp. La disponibilidad puede cambiar.</p>
+      <p class="catalog-note">Precios, tallas y disponibilidad se confirmarán antes de realizar el pedido. Muy pronto habilitaremos el pago en línea.</p>
     </section>
 
     <section class="brand-message">
@@ -92,6 +92,8 @@
       <a class="outline-button" href="https://wa.me/573108895061?text=Hola%20VERA%20STUDIO%2C%20quiero%20conocer%20la%20colecci%C3%B3n." target="_blank" rel="noopener">Hablemos por WhatsApp ↗</a>
     </section>
   </main>
+
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true"><div class="cart-head"><div><p class="eyebrow">VERA STUDIO</p><h2>Mi bolsa</h2></div><button id="closeCart" class="close-cart" aria-label="Cerrar bolsa">×</button></div><div id="cartItems" class="cart-items"><p class="cart-empty">Tu bolsa está vacía.</p></div><div class="cart-summary"><p>El precio y la talla se confirmarán contigo antes de cerrar el pedido.</p><button class="gold-button" id="sendOrder">Consultar mi pedido por WhatsApp ↗</button><small>El pago en línea todavía no está habilitado.</small></div></aside><div class="cart-backdrop" id="cartBackdrop"></div>
 
   <footer id="contacto">
     <a class="brand footer-brand" href="#inicio"><span class="brand-mark">VS</span><span class="brand-name">VERA <b>STUDIO</b></span></a>
