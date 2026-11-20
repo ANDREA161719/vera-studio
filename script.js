@@ -18,19 +18,38 @@ function selectCollection(category) {
   kidsSubfilters.querySelectorAll("[data-kid-filter]").forEach(button => button.classList.toggle("active", button.dataset.kidFilter === "Todos"));
   renderProducts();
 }
+function carouselPageSize() {
+  return window.matchMedia("(max-width: 600px)").matches ? 1 : window.matchMedia("(max-width: 900px)").matches ? 2 : 4;
+}
 function updateCarouselControls() {
   const dots = document.getElementById("carouselDots");
   const cards = [...grid.querySelectorAll(".product-card")];
   dots.innerHTML = "";
-  const perPage = window.matchMedia("(max-width: 600px)").matches ? 1 : window.matchMedia("(max-width: 900px)").matches ? 2 : 4;
+  const perPage = carouselPageSize();
   const pages = Math.ceil(cards.length / perPage);
   for (let i = 0; i < pages; i++) {
-    const dot = document.createElement("span");
+    const dot = document.createElement("button");
+    dot.type = "button";
     dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", "Ir a la página " + (i + 1));
+    dot.addEventListener("click", () => {
+      const target = cards[i * perPage];
+      if (target) grid.scrollTo({ left: target.offsetLeft - grid.offsetLeft, behavior: "smooth" });
+    });
     dots.appendChild(dot);
   }
-  document.getElementById("productsPrev").disabled = cards.length <= perPage;
-  document.getElementById("productsNext").disabled = cards.length <= perPage;
+  const canScroll = grid.scrollWidth > grid.clientWidth + 4;
+  document.getElementById("productsPrev").disabled = !canScroll;
+  document.getElementById("productsNext").disabled = !canScroll;
+}
+function refreshCarouselPosition() {
+  const cards = [...grid.querySelectorAll(".product-card")];
+  const perPage = carouselPageSize();
+  if (!cards.length) return;
+  const page = Math.min(Math.round(grid.scrollLeft / Math.max(1, cards[0].offsetWidth * perPage)), Math.ceil(cards.length / perPage) - 1);
+  [...document.querySelectorAll("#carouselDots .carousel-dot")].forEach((dot, index) => dot.classList.toggle("active", index === page));
+  document.getElementById("productsPrev").disabled = grid.scrollLeft <= 4;
+  document.getElementById("productsNext").disabled = grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 4;
 }
 function renderProducts() {
   const query = searchInput.value.trim().toLowerCase();
@@ -74,6 +93,17 @@ function closeCart() {
   document.getElementById("cartBackdrop").classList.remove("visible");
   document.getElementById("cartPanel").setAttribute("aria-hidden","true");
 }
+document.getElementById("productsPrev").addEventListener("click", () => {
+  grid.scrollBy({ left: -grid.clientWidth, behavior: "smooth" });
+});
+document.getElementById("productsNext").addEventListener("click", () => {
+  grid.scrollBy({ left: grid.clientWidth, behavior: "smooth" });
+});
+grid.addEventListener("scroll", refreshCarouselPosition, { passive: true });
+window.addEventListener("resize", () => {
+  updateCarouselControls();
+  refreshCarouselPosition();
+});
 document.getElementById("filters").addEventListener("click", event => {
   const button = event.target.closest("[data-filter]");
   if (button) selectCollection(button.dataset.filter);
