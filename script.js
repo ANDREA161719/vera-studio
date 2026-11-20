@@ -1,23 +1,35 @@
 const WHATSAPP_NUMBER = "573108895061";
 const grid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
+const kidsSubfilters = document.getElementById("kidsSubfilters");
 let activeFilter = "Todos";
+let activeKidFilter = "Todos";
 let cart = [];
 
 function whatsappLink(product) {
   const message = `Hola VERA STUDIO, quiero consultar disponibilidad, tallas y precio de ${product.name} (referencia ${product.id}).`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
+function selectCollection(category) {
+  activeFilter = category;
+  activeKidFilter = "Todos";
+  document.querySelectorAll("#filters [data-filter]").forEach(button => button.classList.toggle("active", button.dataset.filter === category));
+  kidsSubfilters.hidden = category !== "Infantil";
+  kidsSubfilters.querySelectorAll("[data-kid-filter]").forEach(button => button.classList.toggle("active", button.dataset.kidFilter === "Todos"));
+  renderProducts();
+}
 function renderProducts() {
   const query = searchInput.value.trim().toLowerCase();
   const visible = products.filter(product => {
-    const matchesCategory = activeFilter === "Todos" || product.category === activeFilter || (activeFilter === "Infantil" && ["Niño","Niña"].includes(product.category));
+    const matchesCategory = activeFilter === "Todos" || product.category === activeFilter;
+    const matchesKid = activeFilter !== "Infantil" || activeKidFilter === "Todos" || product.subcategory === activeKidFilter;
     const matchesSearch = `${product.name} ${product.description} ${product.id}`.toLowerCase().includes(query);
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesKid && matchesSearch;
   });
   grid.innerHTML = "";
   if (!visible.length) {
-    grid.innerHTML = '<p class="empty-state">Esta colección estará disponible próximamente. Escríbenos por WhatsApp para consultar novedades.</p>';
+    const message = activeFilter === "Hombre" ? "Estamos preparando la colección VERA HOMBRE. Muy pronto encontrarás aquí nuestras prendas." : activeFilter === "Infantil" ? "Estamos preparando VERA INFANTIL. Pronto encontrarás prendas para niño y niña." : "No encontramos prendas con esa búsqueda. Prueba con otra palabra.";
+    grid.innerHTML = `<div class="empty-collection"><span class="empty-monogram">VS</span><h3>${activeFilter === "Hombre" ? "VERA HOMBRE" : activeFilter === "Infantil" ? "VERA INFANTIL" : "SIN RESULTADOS"}</h3><p>${message}</p><a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola VERA STUDIO, quisiera conocer las próximas novedades.")}" target="_blank" rel="noopener">Consultar novedades por WhatsApp ↗</a></div>`;
     return;
   }
   visible.forEach(product => {
@@ -48,11 +60,16 @@ function closeCart() {
 }
 document.getElementById("filters").addEventListener("click", event => {
   const button = event.target.closest("[data-filter]");
+  if (button) selectCollection(button.dataset.filter);
+});
+kidsSubfilters.addEventListener("click", event => {
+  const button = event.target.closest("[data-kid-filter]");
   if (!button) return;
-  activeFilter = button.dataset.filter;
-  document.querySelectorAll(".filter-btn").forEach(item => item.classList.toggle("active", item === button));
+  activeKidFilter = button.dataset.kidFilter;
+  kidsSubfilters.querySelectorAll("[data-kid-filter]").forEach(item => item.classList.toggle("active", item === button));
   renderProducts();
 });
+document.querySelectorAll("[data-collection]").forEach(card => card.addEventListener("click", () => selectCollection(card.dataset.collection)));
 grid.addEventListener("click", event => {
   const button = event.target.closest("[data-add]");
   if (!button) return;
