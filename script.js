@@ -18,6 +18,20 @@ function selectCollection(category) {
   kidsSubfilters.querySelectorAll("[data-kid-filter]").forEach(button => button.classList.toggle("active", button.dataset.kidFilter === "Todos"));
   renderProducts();
 }
+function updateCarouselControls() {
+  const dots = document.getElementById("carouselDots");
+  const cards = [...grid.querySelectorAll(".product-card")];
+  dots.innerHTML = "";
+  const perPage = window.matchMedia("(max-width: 600px)").matches ? 1 : window.matchMedia("(max-width: 900px)").matches ? 2 : 4;
+  const pages = Math.ceil(cards.length / perPage);
+  for (let i = 0; i < pages; i++) {
+    const dot = document.createElement("span");
+    dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+    dots.appendChild(dot);
+  }
+  document.getElementById("productsPrev").disabled = cards.length <= perPage;
+  document.getElementById("productsNext").disabled = cards.length <= perPage;
+}
 function renderProducts() {
   const query = searchInput.value.trim().toLowerCase();
   const visible = products.filter(product => {
@@ -30,6 +44,7 @@ function renderProducts() {
   if (!visible.length) {
     const message = activeFilter === "Hombre" ? "Estamos preparando la colección VERA HOMBRE. Muy pronto encontrarás aquí nuestras prendas." : activeFilter === "Infantil" ? "Estamos preparando VERA INFANTIL. Pronto encontrarás prendas para niño y niña." : "No encontramos prendas con esa búsqueda. Prueba con otra palabra.";
     grid.innerHTML = `<div class="empty-collection"><span class="empty-monogram">VS</span><h3>${activeFilter === "Hombre" ? "VERA HOMBRE" : activeFilter === "Infantil" ? "VERA INFANTIL" : "SIN RESULTADOS"}</h3><p>${message}</p><a href="https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola VERA STUDIO, quisiera conocer las próximas novedades.")}" target="_blank" rel="noopener">Consultar novedades por WhatsApp ↗</a></div>`;
+    updateCarouselControls();
     return;
   }
   visible.forEach(product => {
@@ -38,6 +53,7 @@ function renderProducts() {
     card.innerHTML = `<div class="product-photo"><img src="${product.image}" alt="${product.name}" loading="lazy"><span class="product-code">${product.id}</span></div><div class="product-info"><h3>${product.name}</h3><p>${product.description}</p><p class="product-price">Precio por confirmar</p><div class="product-actions"><button class="add-cart" data-add="${product.id}">AGREGAR A MI BOLSA +</button><a class="product-link" href="${whatsappLink(product)}" target="_blank" rel="noopener">CONSULTAR ↗</a></div></div>`;
     grid.appendChild(card);
   });
+  updateCarouselControls();
 }
 function renderCart() {
   document.getElementById("cartCount").textContent = cart.reduce((sum,item) => sum + item.quantity, 0);
