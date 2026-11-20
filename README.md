@@ -10,7 +10,7 @@ Sitio estático creado con HTML, CSS y JavaScript para publicar en GitHub Pages.
 - `assets/`: fotografías de las prendas.
 
 ## Publicar en GitHub Pages
-1. Crea un repositorio NUEVO llamado `vera-studio` (no reutilices el repositorio de Bienestar Contigo).
+1. Crea un repositorio NUEVO llamado `vera-studio`
 2. Sube el contenido de esta carpeta a la raíz del repositorio.
 3. En GitHub abre Settings → Pages.
 4. En Build and deployment selecciona Deploy from a branch.
