@@ -9,14 +9,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/logo-vera-studio.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="announcement">NUEVA COLECCIÓN · CONSULTA DISPONIBILIDAD POR WHATSAPP</div>
   <header class="site-header">
     <a class="brand" href="#" aria-label="VERA STUDIO inicio">
-      <span class="brand-mark">VS</span>
-      <span class="brand-name">VERA <b>STUDIO</b></span>
+      <img class="brand-logo" src="assets/logo-vera-studio.png" alt="Logo VERA STUDIO">
     </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
     <nav class="main-nav" id="mainNav">
@@ -54,17 +54,17 @@
       <a class="collection-card collection-women" href="#productos" data-collection="Dama">
         <img src="assets/producto-02.jpg" alt="Colección de moda para dama">
         <span class="collection-shade"></span>
-        <span class="collection-label"><small>01 / COLECCIÓN</small><strong>Dama</strong><i>Explorar ↗</i></span>
+        <span class="collection-label"><small>01 / COLECCIÓN</small><strong>VERA MUJER</strong><i>Explorar ↗</i></span>
       </a>
       <a class="collection-card collection-men" href="#productos" data-collection="Hombre">
         <div class="collection-placeholder"><span>VS</span><small>PRÓXIMAMENTE</small></div>
         <span class="collection-shade"></span>
-        <span class="collection-label"><small>02 / COLECCIÓN</small><strong>Hombre</strong><i>Explorar ↗</i></span>
+        <span class="collection-label"><small>02 / COLECCIÓN</small><strong>VERA HOMBRE</strong><i>Explorar ↗</i></span>
       </a>
       <a class="collection-card collection-kids" href="#productos" data-collection="Infantil">
         <div class="collection-placeholder"><span>VS</span><small>PRÓXIMAMENTE</small></div>
         <span class="collection-shade"></span>
-        <span class="collection-label"><small>03 / COLECCIÓN</small><strong>Infantil</strong><i>Explorar ↗</i></span>
+        <span class="collection-label"><small>03 / COLECCIÓN</small><strong>VERA INFANTIL</strong><i>Explorar ↗</i></span>
       </a>
     </section>
 
@@ -76,12 +76,13 @@
       <div class="toolbar">
         <div class="filters" id="filters">
           <button class="filter-btn active" data-filter="Todos">Todo</button>
-          <button class="filter-btn" data-filter="Dama">Dama</button>
-          <button class="filter-btn" data-filter="Hombre">Hombre</button>
-          <button class="filter-btn" data-filter="Infantil">Infantil</button>
+          <button class="filter-btn" data-filter="Dama">VERA MUJER</button>
+          <button class="filter-btn" data-filter="Hombre">VERA HOMBRE</button>
+          <button class="filter-btn" data-filter="Infantil">VERA INFANTIL</button>
         </div>
         <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar una prenda..." aria-label="Buscar productos"></label>
       </div>
+      <div class="kids-subfilters" id="kidsSubfilters" hidden><button class="filter-btn" data-kid-filter="Todos">Todos</button><button class="filter-btn" data-kid-filter="Niña">Niña</button><button class="filter-btn" data-kid-filter="Niño">Niño</button></div>
       <div class="product-grid" id="productGrid" aria-live="polite"></div>
       <p class="catalog-note">Precios, tallas y disponibilidad se confirmarán antes de realizar el pedido. Muy pronto habilitaremos el pago en línea.</p>
     </section>
@@ -96,7 +97,7 @@
   <aside class="cart-panel" id="cartPanel" aria-hidden="true"><div class="cart-head"><div><p class="eyebrow">VERA STUDIO</p><h2>Mi bolsa</h2></div><button id="closeCart" class="close-cart" aria-label="Cerrar bolsa">×</button></div><div id="cartItems" class="cart-items"><p class="cart-empty">Tu bolsa está vacía.</p></div><div class="cart-summary"><p>El precio y la talla se confirmarán contigo antes de cerrar el pedido.</p><button class="gold-button" id="sendOrder">Consultar mi pedido por WhatsApp ↗</button><small>El pago en línea todavía no está habilitado.</small></div></aside><div class="cart-backdrop" id="cartBackdrop"></div>
 
   <footer id="contacto">
-    <a class="brand footer-brand" href="#inicio"><span class="brand-mark">VS</span><span class="brand-name">VERA <b>STUDIO</b></span></a>
+    <a class="brand footer-brand" href="#inicio"><img class="brand-logo footer-logo" src="assets/logo-vera-studio.png" alt="Logo VERA STUDIO"></a>
     <p>Tu estilo · Tu esencia</p>
     <div class="footer-links">
       <a href="https://wa.me/573108895061" target="_blank" rel="noopener">WhatsApp</a>
