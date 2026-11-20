@@ -48,3 +48,13 @@
  .site-header .brand-logo{width:82px!important;height:72px!important}
  .site-header .cart-toggle{padding:7px 8px;font-size:9px}
 }
+
+/* Colecciones y subcolecciones VERA STUDIO */
+.kids-subfilters{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-8px 0 22px}
+.kids-subfilters[hidden]{display:none}
+.kids-label{font-size:10px;letter-spacing:1.5px;color:#8b7656;font-weight:700;margin-right:5px}
+.empty-collection{grid-column:1/-1;text-align:center;padding:58px 24px;background:#eee8df;border:1px solid #ded4c5}
+.empty-monogram{display:inline-grid;place-items:center;width:58px;height:58px;border:1px solid #b99a68;color:#a48758;font-family:"Playfair Display",serif;font-size:25px;margin-bottom:14px}
+.empty-collection h3{font:500 23px "Playfair Display",serif;letter-spacing:2px;margin:0 0 10px}
+.empty-collection p{font-size:13px;color:#777168;line-height:1.7;margin:0 auto 18px;max-width:440px}
+.empty-collection a{font-size:11px;letter-spacing:.7px;text-decoration:underline;color:#8b6e40}
