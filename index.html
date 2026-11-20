@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubre las colecciones de VERA STUDIO. Moda para dama, hombre y niños. Consulta disponibilidad por WhatsApp.">
+  <meta name="theme-color" content="#171614">
+  <title>VERA STUDIO | Tu estilo, tu esencia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="announcement">NUEVA COLECCIÓN · CONSULTA DISPONIBILIDAD POR WHATSAPP</div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="VERA STUDIO inicio">
+      <span class="brand-mark">VS</span>
+      <span class="brand-name">VERA <b>STUDIO</b></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#inicio">Inicio</a>
+      <a href="#colecciones">Colecciones</a>
+      <a href="#productos">Novedades</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/573108895061" target="_blank" rel="noopener">WhatsApp ↗</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">ESTILO QUE HABLA POR TI</p>
+        <h1>Tu estilo.<br><em>Tu esencia.</em></h1>
+        <p class="hero-text">Prendas para expresar quién eres, todos los días.</p>
+        <a class="gold-button" href="#productos">Explorar colección <span>↗</span></a>
+        <p class="hero-note">VERA STUDIO · MODA PARA TODA LA FAMILIA</p>
+      </div>
+      <div class="hero-image">
+        <img src="assets/producto-02.jpg" alt="Jean denim con bordados florales de VERA STUDIO">
+        <div class="image-caption"><span>DENIM EDITION</span><span>01 / 10</span></div>
+      </div>
+      <div class="hero-sideword">VERA STUDIO</div>
+    </section>
+
+    <section class="intro section-wrap">
+      <p class="eyebrow">DESCUBRE TU PRÓXIMO LOOK</p>
+      <h2>Encuentra tu <em>estilo</em></h2>
+      <p>Explora nuestras prendas y consulta por WhatsApp las tallas y referencias disponibles.</p>
+    </section>
+
+    <section class="collections section-wrap" id="colecciones">
+      <a class="collection-card collection-women" href="#productos" data-collection="Dama">
+        <img src="assets/producto-02.jpg" alt="Colección de moda para dama">
+        <span class="collection-shade"></span>
+        <span class="collection-label"><small>01 / COLECCIÓN</small><strong>Dama</strong><i>Explorar ↗</i></span>
+      </a>
+      <a class="collection-card collection-men" href="#productos" data-collection="Hombre">
+        <div class="collection-placeholder"><span>VS</span><small>PRÓXIMAMENTE</small></div>
+        <span class="collection-shade"></span>
+        <span class="collection-label"><small>02 / COLECCIÓN</small><strong>Hombre</strong><i>Explorar ↗</i></span>
+      </a>
+      <a class="collection-card collection-kids" href="#productos" data-collection="Infantil">
+        <div class="collection-placeholder"><span>VS</span><small>PRÓXIMAMENTE</small></div>
+        <span class="collection-shade"></span>
+        <span class="collection-label"><small>03 / COLECCIÓN</small><strong>Infantil</strong><i>Explorar ↗</i></span>
+      </a>
+    </section>
+
+    <section class="products-section section-wrap" id="productos">
+      <div class="section-heading">
+        <div><p class="eyebrow">SELECCIÓN VERA STUDIO</p><h2>Prendas <em>destacadas</em></h2></div>
+        <p>Encuentra esa pieza especial para completar tu look.</p>
+      </div>
+      <div class="toolbar">
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="Todos">Todo</button>
+          <button class="filter-btn" data-filter="Dama">Dama</button>
+          <button class="filter-btn" data-filter="Hombre">Hombre</button>
+          <button class="filter-btn" data-filter="Infantil">Infantil</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar una prenda..." aria-label="Buscar productos"></label>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <p class="catalog-note">Los precios y las tallas se consultan directamente por WhatsApp. La disponibilidad puede cambiar.</p>
+    </section>
+
+    <section class="brand-message">
+      <p class="eyebrow">VERA STUDIO</p>
+      <h2>La moda cambia.<br><em>Tu esencia permanece.</em></h2>
+      <a class="outline-button" href="https://wa.me/573108895061?text=Hola%20VERA%20STUDIO%2C%20quiero%20conocer%20la%20colecci%C3%B3n." target="_blank" rel="noopener">Hablemos por WhatsApp ↗</a>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <a class="brand footer-brand" href="#inicio"><span class="brand-mark">VS</span><span class="brand-name">VERA <b>STUDIO</b></span></a>
+    <p>Tu estilo · Tu esencia</p>
+    <div class="footer-links">
+      <a href="https://wa.me/573108895061" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.tiktok.com/@vs.vera.studio" target="_blank" rel="noopener">TikTok</a>
+    </div>
+    <small>© <span id="year"></span> VERA STUDIO. Todos los derechos reservados.</small>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
