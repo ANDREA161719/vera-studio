@@ -19,7 +19,7 @@ function selectCollection(category) {
   renderProducts();
 }
 function carouselPageSize() {
-  return window.matchMedia("(max-width: 600px)").matches ? 1 : window.matchMedia("(max-width: 900px)").matches ? 2 : 4;
+  return window.matchMedia("(max-width: 600px)").matches ? 1 : window.matchMedia("(max-width: 900px)").matches ? 2 : 3;
 }
 function updateCarouselControls() {
   const dots = document.getElementById("carouselDots");
